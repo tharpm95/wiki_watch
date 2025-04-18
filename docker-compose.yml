@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  ui:
+    build:
+      context: ./ui
+      dockerfile: Dockerfile
+    ports:
+      - "4200:4200"
+    volumes:
+      - ./ui/wiki_watch:/app/wiki_watch
+    command: ["ng", "serve", "--host", "0.0.0.0"]
