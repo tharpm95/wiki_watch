@@ -19,3 +19,18 @@ services:
       - "3000:3000"
     volumes:
       - ./api:/app
+
+  db:
+    build:
+      context: ./db
+      dockerfile: Dockerfile
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: mydatabase
+    ports:
+      - "3306:3306"  # Assuming MySQL default port, adjust if using another DB
+    volumes:
+      - db_data:/var/lib/mysql  # Persistent data storage
+
+volumes:
+  db_data:
